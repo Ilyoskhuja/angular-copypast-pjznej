@@ -1,11 +1,6 @@
 <div class="control-section">
   <div *ngIf="showChooser" style="display:flex; justify-content:space-between">
-  <div class="e-mastertext" >
-    Select column name to toggle visibility
-  </div>
-  
-    
-  <button type="button" style="height:20px;width:60px" (click)="closeP('showChooser')">X</button>
+    <div class="e-mastertext">Select column name to toggle visibility</div>
   </div>
   <ejs-toolbar
     class="e-gridlist"
@@ -22,12 +17,11 @@
       <e-item text="Priority"></e-item>
     </e-items>
   </ejs-toolbar>
-  <div *ngIf="sorting" class="col-lg-3 property-section">
+  <!-- <div *ngIf="sorting" class="col-lg-3 property-section">
   <div class="property-panel-section">
     <div style="display:flex; justify-content:space-between">
     <div class="property-panel-header">Multi-sort Properties </div>
     
-  <button type="button" style="height:20px;width:60px" (click)="closeP('sorting')">X</button>
     </div>  
    <table id="property" class="property-panel-table" title="Properties" style="width: 100%">
           <tr>
@@ -103,22 +97,15 @@
   </tr>
       </table>
   </div>
-</div>
-<div *ngIf="filtering">
-  <br />
-  <button  type="button" style="height:20px;width:160px" (click)="closeP('filtering')">Close FilterBar</button>
-  <br />
-</div>
-  
+</div> -->
 
   <ejs-treegrid
     #treegrid
     [dataSource]="data"
     [treeColumnIndex]="1"
-
     [allowFiltering]="filtering"
     [allowSorting]="sorting"
-    [sortSettings]='sortSettings' 
+    [sortSettings]="sortSettings"
     [allowResizing]="true"
     [allowTextWrap]="textWrap"
     allowReordering="true"
@@ -144,142 +131,138 @@
     [columns]="treeColumns"
     (rowSelected)="rowSelected($event)"
   >
- 
   </ejs-treegrid>
-  <div *ngIf="showEditColumn"
-  >
-  <ejs-dialog
-    id="dialog"
-    #ejDialog
-    [animationSettings]="animationSettings"
-    header="Edit Column"
-    [target]="targetElement"
-    width="300px"
-    [showCloseIcon]="showCloseIcon"
+  <div *ngIf="showEditColumn">
+    <ejs-dialog
+      id="dialog"
+      #ejDialog
+      [animationSettings]="animationSettings"
+      header="Edit Column"
+      [target]="targetElement"
+      width="300px"
+      [showCloseIcon]="showCloseIcon"
     >
-    <ng-template #content>
-      <form id="template_driven" #userForm="ngForm" novalidate>
-        <div class="form-group" style="padding-top: 11px;">
-          <div class="e-float-input">
-            <input
-              type="text"
-              name="ColName"
-              required
-              [(ngModel)]="ColName" 
-            />
-            <span class="e-float-line"></span>
-            <label class="e-float-text e-label-top" for="name">Name</label>
-          
-          </div>
-        </div>
-
-        <div class="form-group" style="padding-top: 11px;">
-          <div class="e-float-input">
-            <ejs-dropdownlist
-              #dropdown2
-              id="element"
-              [dataSource]="d2data"
-              [fields]="fields"
-              placeholder="Type"
-              name="ColType"
-              [(ngModel)]="ColType" 
-            ></ejs-dropdownlist>
-                </div>
-        </div>
-
-       
-        <div class="form-group" style="padding-top: 11px;">
-          <div class="e-float-input">
-            <ejs-dropdownlist
-              #dropdown1
-              id="ddlelement"
-              [dataSource]="d4data"
-              [fields]="fields"
-              placeholder="Minimum-Column-Width"
-              
-              name="ColMinWidth"
-              [(ngModel)]="ColMinWidth" 
-            ></ejs-dropdownlist>
-
+      <ng-template #content>
+        <form id="template_driven" #userForm="ngForm" novalidate>
+          <div class="form-group" style="padding-top: 11px;">
+            <div class="e-float-input">
+              <input
+                type="text"
+                name="ColName"
+                required
+                [(ngModel)]="ColName"
+              />
+              <span class="e-float-line"></span>
+              <label class="e-float-text e-label-top" for="name">Name</label>
             </div>
-        </div>
-
-        <div class="form-group" style="padding-top: 11px;">
-          <div style="display:flex; justify-content: space-between;">
-            <span class="e-float-text e-label-top">Font-color</span>
-
-            <input
-              ejs-colorpicker
-              type="color"
-              id="element"
-              value="#035a"
-              (change)="changeFontColor($event)"
-              id="colorpicker"
-            />
           </div>
-        </div>
-        <div class="form-group" style="padding-top: 11px;">
-          <div style="display:flex; justify-content: space-between;">
-            <span class="e-float-text e-label-top">Background-color</span>
 
-            <input
-              ejs-colorpicker
-              type="color"
-              id="element"
-              value="035a"
-              (change)="changeBackground($event)"
-              id="colorpicker"
-            />
+          <div class="form-group" style="padding-top: 11px;">
+            <div class="e-float-input">
+              <ejs-dropdownlist
+                #dropdown2
+                id="element"
+                [dataSource]="d2data"
+                [fields]="fields"
+                placeholder="Type"
+                name="ColType"
+                [(ngModel)]="ColType"
+              ></ejs-dropdownlist>
+            </div>
           </div>
-        </div>
-        <div class="form-group" style="padding-top: 11px;">
-          <div class="e-float-input">
-            <ejs-dropdownlist
-              #dropdown2
-              id="element"
-              [dataSource]="d3data"
-              [fields]="fields"
-              name="ColAlign"
-              [(ngModel)]="ColAlign" 
-              placeholder='Alignment'
-            ></ejs-dropdownlist>
-          </div>
-        </div>
-        <div class="form-group" style="padding-top: 11px;">
-          <div style="display:flex; justify-content: space-between;">
-            <span class="e-float-text e-label-top" for="email">Text-wrap</span>
 
-            <ejs-checkbox
-              labelPosition="Before"
-              [checked]="false"
-              name="ColChecked"
-              [(ngModel)]="ColChecked" 
-            ></ejs-checkbox>
+          <div class="form-group" style="padding-top: 11px;">
+            <div class="e-float-input">
+              <ejs-dropdownlist
+                #dropdown1
+                id="ddlelement"
+                [dataSource]="d4data"
+                [fields]="fields"
+                placeholder="Minimum-Column-Width"
+                name="ColMinWidth"
+                [(ngModel)]="ColMinWidth"
+              ></ejs-dropdownlist>
+            </div>
           </div>
+
+          <div class="form-group" style="padding-top: 11px;">
+            <div style="display:flex; justify-content: space-between;">
+              <span class="e-float-text e-label-top">Font-color</span>
+
+              <input
+                ejs-colorpicker
+                type="color"
+                id="element"
+                value="#035a"
+                (change)="changeFontColor($event)"
+                id="colorpicker"
+              />
+            </div>
+          </div>
+          <div class="form-group" style="padding-top: 11px;">
+            <div style="display:flex; justify-content: space-between;">
+              <span class="e-float-text e-label-top">Background-color</span>
+
+              <input
+                ejs-colorpicker
+                type="color"
+                id="element"
+                value="035a"
+                (change)="changeBackground($event)"
+                id="colorpicker"
+              />
+            </div>
+          </div>
+          <div class="form-group" style="padding-top: 11px;">
+            <div class="e-float-input">
+              <ejs-dropdownlist
+                #dropdown2
+                id="element"
+                [dataSource]="d3data"
+                [fields]="fields"
+                name="ColAlign"
+                [(ngModel)]="ColAlign"
+                placeholder="Alignment"
+              ></ejs-dropdownlist>
+            </div>
+          </div>
+          <div class="form-group" style="padding-top: 11px;">
+            <div style="display:flex; justify-content: space-between;">
+              <span class="e-float-text e-label-top" for="email"
+                >Text-wrap</span
+              >
+
+              <ejs-checkbox
+                labelPosition="Before"
+                [checked]="false"
+                name="ColChecked"
+                [(ngModel)]="ColChecked"
+              ></ejs-checkbox>
+            </div>
+          </div>
+        </form>
+      </ng-template>
+      <ng-template #footerTemplate>
+        <div>
+          <button
+            id="Button1"
+            class="e-control e-btn e-primary e-flat"
+            (click)="saveColumn($event)"
+            data-ripple="true"
+          >
+            <span class="e-btn-icon e-icons e-ok-icon e-icon-left"></span>Save
+          </button>
+          <button
+            id="Button2"
+            class="e-control e-btn e-flat"
+            (click)="btnclick($event)"
+            data-ripple="true"
+          >
+            <span class="e-btn-icon e-icons e-close-icon e-icon-left"></span
+            >Cancel
+          </button>
         </div>
-      </form>
-    </ng-template>
-    <ng-template #footerTemplate>
-      <div>
-        <button
-          id="Button1"
-          class="e-control e-btn e-primary e-flat"
-          (click)="saveColumn($event)"
-          data-ripple="true"
-        >
-          <span class="e-btn-icon e-icons e-ok-icon e-icon-left"></span>Save
-        </button>
-        <button
-          id="Button2"
-          class="e-control e-btn e-flat"
-          (click)="btnclick($event)"
-          data-ripple="true"
-        >
-          <span class="e-btn-icon e-icons e-close-icon e-icon-left"></span
-          >Cancel
-        </button>
-      </div>
-    </ng-template>
-  </ejs-dialog>
+      </ng-template>
+    </ejs-dialog>
   </div>
 </div>

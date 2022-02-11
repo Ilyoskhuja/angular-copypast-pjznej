@@ -365,26 +365,8 @@ export class AppComponent {
       },
     };
   }
-  closeP(data) {
-    console.log('closeP:', data);
-    if (data == 'sorting') {
-      this.sorting = false;
-    }
-    if (data == 'showChooser') this.showChooser = false;
-    if (data == 'filtering') {
-      this.filtering = false;
-    }
-  }
 
-  deleteColumnX() {
-    this.treegrid.columns.filter((i, x) => {
-      if (i.field == this.columnField) {
-        this.treegrid.columns.splice(x, 1);
-      }
-    });
-
-    this.treegrid.refreshColumns();
-  }
+ 
   actionComplete(args: EditEventArgs) {
     if (args.requestType == 'save' && args.action == 'add') {
       const body = {
