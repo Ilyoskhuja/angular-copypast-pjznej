@@ -261,11 +261,6 @@ export class AppComponent {
   });
   constructor(private http: HttpClient) {}
   ngOnInit(): void {
-    //     this.sortSettings =  {
-    //       columns: [
-
-    //   ]
-    // }
     this.customAttributes = { class: 'customcssa' };
     this.selectionOptions = {
       type: 'Multiple',
@@ -338,17 +333,6 @@ export class AppComponent {
         target: '.e-content',
         iconCss: 'e-cm-icons e-cut',
       },
-      // { text: 'Style', target: '.e-headercontent', id: 'style' },
-
-      // { text: 'EditCol ', target: '.e-headercontent', id: 'editCol' },
-      // { text: 'NewCol ', target: '.e-headercontent', id: 'newCol' },
-
-      // { text: 'DeleteCol ', target: '.e-headercontent', id: 'deleteCol' },
-      // { text: 'Show', target: '.e-headercontent', id: 'columnChooser' },
-      // { text: 'Freeze', target: '.e-headercontent', id: 'freeze' },
-
-      // { text: 'Filter', target: '.e-headercontent', id: 'filter' },
-      // { text: 'Multi-Sort', target: '.e-headercontent', id: 'multiSort' },
     ];
     this.filterSettings = {
       type: 'FilterBar',
@@ -391,43 +375,17 @@ export class AppComponent {
       this.filtering = false;
     }
   }
-  // addColumn() {
-  //   var column: any = { field: 'zzzzz', headerText: 'zzzzz', width: 50 };
-  //   this.treeColumns.push(column);
 
-  //   console.log("AddColumn:", this.treeColumns);
-  //   this.treegrid.refreshColumns();
-  // }
   deleteColumnX() {
     this.treegrid.columns.filter((i, x) => {
       if (i.field == this.columnField) {
         this.treegrid.columns.splice(x, 1);
-        console.log('x:----', x);
-        //you can simply remove based on field name or an index of a column
       }
     });
-    // this.listHeadersC=this.listHeadersC.filter(r =>
-    //   r.field !== this.columnField
-    // );
 
-    // this.treegrid.columns.splice(x,1);
-    // this.treeColumns = this.listHeadersC;
-    // console.log("-----this.treeColumns:",this.treeColumns)
     this.treegrid.refreshColumns();
   }
   actionComplete(args: EditEventArgs) {
-    // if (args.requestType === 'sorting') {
-    //   console.log("sorting");
-    //   for (let columns of this.treegrid.getColumns()) {
-    //       for (let sortcolumns of this.treegrid.sortSettings.columns) {
-    //           if (sortcolumns.field === columns.field) {
-    //               this.check(sortcolumns.field, true); break;
-    //           } else {
-    //               this.check(columns.field, false);
-    //           }
-    //       }
-    //   }
-    // }
     if (args.requestType == 'save' && args.action == 'add') {
       const body = {
         TaskID: 0,
@@ -705,16 +663,6 @@ export class AppComponent {
       document
         .querySelectorAll('li#rchild')[0]
         .setAttribute('style', 'display: block;');
-      // }
-    } else {
-      let len =
-        this.treegrid.element.querySelectorAll('.e-treegridexpand').length;
-      // if (len !== 0) {
-
-      // } else {
-      //   document
-      //     .querySelectorAll('li#expandall')[0]
-      //     .setAttribute('style', 'display: block;');
       // }
     }
   }
@@ -1206,14 +1154,4 @@ export class AppComponent {
         break;
     }
   }
-}
-export interface ITaskModel {
-  TaskID?: number;
-  TaskName?: string;
-  StartDate?: Date;
-  EndDate?: Date;
-
-  Duration?: number;
-  Progress?: number;
-  Priority?: string;
 }
