@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import {
   TreeGridComponent,
   RowDDService,
@@ -12,36 +12,27 @@ import {
 
 import { Treerow } from './treerow';
 import { v4 as uuidv4 } from 'uuid';
-import { getValue, isNullOrUndefined } from '@syncfusion/ej2-base';
 import { BeforeOpenCloseEventArgs } from '@syncfusion/ej2-inputs';
 import { DropDownList } from '@syncfusion/ej2-dropdowns';
-import { RowDataBoundEventArgs } from '@syncfusion/ej2-grids';
-import { ButtonComponent } from '@syncfusion/ej2-angular-buttons';
-
-import { Browser } from '@syncfusion/ej2-base';
 import { NumericTextBoxComponent } from '@syncfusion/ej2-angular-inputs';
-import { DialogEditEventArgs } from '@syncfusion/ej2-grids';
+
 import { DialogComponent } from '@syncfusion/ej2-angular-popups';
 import { EmitType } from '@syncfusion/ej2-base';
 import { HttpClient } from '@angular/common/http';
 import {
-  FormGroup,
-  AbstractControl,
-  FormControl,
-  Validators,
+  FormGroup
 } from '@angular/forms';
 import {
   DataManager,
   WebApiAdaptor,
   Query,
   ReturnOption,
-  UrlAdaptor,
+
 } from '@syncfusion/ej2-data';
 
 import { addClass, removeClass } from '@syncfusion/ej2-base';
 import { CheckBoxComponent } from '@syncfusion/ej2-angular-buttons';
-import { CheckBoxAllModule} from '@syncfusion/ej2-angular-buttons';
-import { SortEventArgs } from '@syncfusion/ej2-grids';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
