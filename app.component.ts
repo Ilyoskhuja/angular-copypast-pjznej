@@ -499,67 +499,10 @@ export class AppComponent {
     if (args.item.text === 'Edit') {
       this.treegrid.startEdit(); //you can save a record by invoking endEdit
     }
-    if (args.item.text === 'Delete') {
-      var rowInfo = this.treegrid.getSelectedRecords()[0];
-
-      this.http
-        .delete<any>(`https://vom-app.herokuapp.com/tasks/${rowInfo.TaskID}`)
-        .subscribe((data) => {
-          console.log(data);
-          this.treegrid.refresh();
-        });
-      this.dataManager
-        .executeQuery(new Query())
-        .then((e: ReturnOption) => (this.data = e.result.data as object[]))
-        .catch((e) => true);
-
-      // this.remove();
-      this.treegrid.endEdit(); //you can save a record by invoking endEdit
-    }
+   
   }
-  public insert(): void {
-    this.treegrid.endEdit();
-    var rowInfo = this.treegrid.getSelectedRecords()[0];
 
-    const body = {
-      TaskID: rowInfo.TaskID,
-      TaskName: rowInfo.TaskName,
-      StartDate: rowInfo.StartDate,
-      EndDate: rowInfo.EndDate,
-      Duration: rowInfo.Duration,
-      Progress: rowInfo.Progress,
-      Priority: rowInfo.Priority,
-      isParent: rowInfo.isParent,
-    };
-    this.http
-      .put<any>('https://vom-app.herokuapp.com/tasks', body)
-      .subscribe((data) => {
-        console.log(data);
-        this.dataManager
-          .executeQuery(new Query())
-          .then((e: ReturnOption) => (this.data = e.result.data as object[]))
-          .catch((e) => true);
-      });
-  }
-  public remove(): void {
-    var rowInfo = this.treegrid.getRowInfo(
-      this.treegrid.getRowByIndex(this.rowIndex)
-    );
 
-    this.dm.remove('TaskID', {
-      TaskID: rowInfo.TaskID,
-      TaskName: rowInfo.TaskName,
-      StartDate: rowInfo.StartDate,
-      EndDate: rowInfo.EndDate,
-      Duration: rowInfo.Duration,
-      Progress: rowInfo.Progress,
-      Priority: rowInfo.Priority,
-    });
-    this.dm
-      .executeQuery(new Query())
-      .then((e: ReturnOption) => (this.data = e.result as object[]))
-      .catch((e) => true);
-  }
   getCurrentField() {
     console.log(
       'this.checkNewEdit:----------',
@@ -1070,70 +1013,4 @@ export class AppComponent {
     this.treegrid.refresh();
   }
 
-  /************************** Multi Sort ********************/
-  // public onClick1(e: MouseEvent): void {
-  //   if (this.taskNameM.checked) {
-  //     this.treegrid.sortByColumn('TaskName', 'Ascending', true);
-  //   } else {
-  //     this.treegrid.grid.removeSortColumn('TaskName');
-  //   }
-  // }
-  // public onClick2(e: MouseEvent): void {
-  //   if (this.durationM.checked) {
-  //     this.treegrid.sortByColumn('Duration', 'Ascending', true);
-  //   } else {
-  //     this.treegrid.grid.removeSortColumn('Duration');
-  //   }
-  // }
-  // public onClick3(e: MouseEvent): void {
-  //   if (this.startDateM.checked) {
-  //     this.treegrid.sortByColumn('StartDate', 'Ascending', true);
-  //   } else {
-  //     this.treegrid.grid.removeSortColumn('StartDate');
-  //   }
-  // }
-  // public onClick4(e: MouseEvent): void {
-  //   if (this.endDateM.checked) {
-  //     this.treegrid.sortByColumn('EndDate', 'Ascending', true);
-  //   } else {
-  //     this.treegrid.grid.removeSortColumn('EndDate');
-  //   }
-  // }
-  // public onClick5(e: MouseEvent): void {
-  //   if (this.priorityM.checked) {
-  //     this.treegrid.sortByColumn('Priority', 'Ascending', true);
-  //   } else {
-  //     this.treegrid.grid.removeSortColumn('Priority');
-  //   }
-  // }
-  // public onClick6(e: MouseEvent): void {
-  //   if (this.progressM.checked) {
-  //     this.treegrid.sortByColumn('Progress', 'Ascending', true);
-  //   } else {
-  //     this.treegrid.grid.removeSortColumn('Progress');
-  //   }
-  // }
-
-  // public check(field: string, state: boolean): void {
-  //   switch (field) {
-  //     case 'TaskName':
-  //       this.taskNameM.checked = state;
-  //       break;
-  //     case 'Duration':
-  //       this.durationM.checked = state;
-  //       break;
-  //     case 'StartDate':
-  //       this.startDateM.checked = state;
-  //       break;
-  //     case 'EndDate':
-  //       this.endDateM.checked = state;
-  //       break;
-  //     case 'Priority':
-  //       this.priorityM.checked = state;
-  //       break;
-  //     case 'Progress':
-  //       this.progressM.checked = state;
-  //       break;
-  //   }
-  // }
 }
