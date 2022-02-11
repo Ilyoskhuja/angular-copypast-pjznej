@@ -1071,69 +1071,69 @@ export class AppComponent {
   }
 
   /************************** Multi Sort ********************/
-  public onClick1(e: MouseEvent): void {
-    if (this.taskNameM.checked) {
-      this.treegrid.sortByColumn('TaskName', 'Ascending', true);
-    } else {
-      this.treegrid.grid.removeSortColumn('TaskName');
-    }
-  }
-  public onClick2(e: MouseEvent): void {
-    if (this.durationM.checked) {
-      this.treegrid.sortByColumn('Duration', 'Ascending', true);
-    } else {
-      this.treegrid.grid.removeSortColumn('Duration');
-    }
-  }
-  public onClick3(e: MouseEvent): void {
-    if (this.startDateM.checked) {
-      this.treegrid.sortByColumn('StartDate', 'Ascending', true);
-    } else {
-      this.treegrid.grid.removeSortColumn('StartDate');
-    }
-  }
-  public onClick4(e: MouseEvent): void {
-    if (this.endDateM.checked) {
-      this.treegrid.sortByColumn('EndDate', 'Ascending', true);
-    } else {
-      this.treegrid.grid.removeSortColumn('EndDate');
-    }
-  }
-  public onClick5(e: MouseEvent): void {
-    if (this.priorityM.checked) {
-      this.treegrid.sortByColumn('Priority', 'Ascending', true);
-    } else {
-      this.treegrid.grid.removeSortColumn('Priority');
-    }
-  }
-  public onClick6(e: MouseEvent): void {
-    if (this.progressM.checked) {
-      this.treegrid.sortByColumn('Progress', 'Ascending', true);
-    } else {
-      this.treegrid.grid.removeSortColumn('Progress');
-    }
-  }
+  // public onClick1(e: MouseEvent): void {
+  //   if (this.taskNameM.checked) {
+  //     this.treegrid.sortByColumn('TaskName', 'Ascending', true);
+  //   } else {
+  //     this.treegrid.grid.removeSortColumn('TaskName');
+  //   }
+  // }
+  // public onClick2(e: MouseEvent): void {
+  //   if (this.durationM.checked) {
+  //     this.treegrid.sortByColumn('Duration', 'Ascending', true);
+  //   } else {
+  //     this.treegrid.grid.removeSortColumn('Duration');
+  //   }
+  // }
+  // public onClick3(e: MouseEvent): void {
+  //   if (this.startDateM.checked) {
+  //     this.treegrid.sortByColumn('StartDate', 'Ascending', true);
+  //   } else {
+  //     this.treegrid.grid.removeSortColumn('StartDate');
+  //   }
+  // }
+  // public onClick4(e: MouseEvent): void {
+  //   if (this.endDateM.checked) {
+  //     this.treegrid.sortByColumn('EndDate', 'Ascending', true);
+  //   } else {
+  //     this.treegrid.grid.removeSortColumn('EndDate');
+  //   }
+  // }
+  // public onClick5(e: MouseEvent): void {
+  //   if (this.priorityM.checked) {
+  //     this.treegrid.sortByColumn('Priority', 'Ascending', true);
+  //   } else {
+  //     this.treegrid.grid.removeSortColumn('Priority');
+  //   }
+  // }
+  // public onClick6(e: MouseEvent): void {
+  //   if (this.progressM.checked) {
+  //     this.treegrid.sortByColumn('Progress', 'Ascending', true);
+  //   } else {
+  //     this.treegrid.grid.removeSortColumn('Progress');
+  //   }
+  // }
 
-  public check(field: string, state: boolean): void {
-    switch (field) {
-      case 'TaskName':
-        this.taskNameM.checked = state;
-        break;
-      case 'Duration':
-        this.durationM.checked = state;
-        break;
-      case 'StartDate':
-        this.startDateM.checked = state;
-        break;
-      case 'EndDate':
-        this.endDateM.checked = state;
-        break;
-      case 'Priority':
-        this.priorityM.checked = state;
-        break;
-      case 'Progress':
-        this.progressM.checked = state;
-        break;
-    }
-  }
+  // public check(field: string, state: boolean): void {
+  //   switch (field) {
+  //     case 'TaskName':
+  //       this.taskNameM.checked = state;
+  //       break;
+  //     case 'Duration':
+  //       this.durationM.checked = state;
+  //       break;
+  //     case 'StartDate':
+  //       this.startDateM.checked = state;
+  //       break;
+  //     case 'EndDate':
+  //       this.endDateM.checked = state;
+  //       break;
+  //     case 'Priority':
+  //       this.priorityM.checked = state;
+  //       break;
+  //     case 'Progress':
+  //       this.progressM.checked = state;
+  //       break;
+  //   }
+  // }
 }
