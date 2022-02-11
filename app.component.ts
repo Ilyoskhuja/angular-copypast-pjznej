@@ -6,8 +6,7 @@ import {
   SortService,
   EditService,
   ToolbarService,
-
-  FilterService
+  FilterService,
 } from '@syncfusion/ej2-angular-treegrid';
 
 import { Treerow } from './treerow';
@@ -19,15 +18,12 @@ import { NumericTextBoxComponent } from '@syncfusion/ej2-angular-inputs';
 import { DialogComponent } from '@syncfusion/ej2-angular-popups';
 import { EmitType } from '@syncfusion/ej2-base';
 import { HttpClient } from '@angular/common/http';
-import {
-  FormGroup
-} from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import {
   DataManager,
   WebApiAdaptor,
   Query,
   ReturnOption,
-
 } from '@syncfusion/ej2-data';
 
 import { addClass, removeClass } from '@syncfusion/ej2-base';
@@ -42,31 +38,27 @@ import { CheckBoxComponent } from '@syncfusion/ej2-angular-buttons';
     SortService,
     ToolbarService,
     EditService,
-    FilterService
+    FilterService,
   ],
 
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['app.component.css'],
 })
 export class AppComponent {
+  @ViewChild('taskName')
+  public taskNameM: CheckBoxComponent;
+  @ViewChild('duration')
+  public durationM: CheckBoxComponent;
+  @ViewChild('startDate')
+  public startDateM: CheckBoxComponent;
+  @ViewChild('endDate')
+  public endDateM: CheckBoxComponent;
+  @ViewChild('priority')
+  public priorityM: CheckBoxComponent;
+  @ViewChild('progress')
+  public progressM: CheckBoxComponent;
 
-
-@ViewChild('taskName')
-public taskNameM: CheckBoxComponent;
-@ViewChild('duration')
-public durationM: CheckBoxComponent;
-@ViewChild('startDate')
-public startDateM: CheckBoxComponent;
-@ViewChild('endDate')
-public endDateM: CheckBoxComponent;
-@ViewChild('priority')
-public priorityM: CheckBoxComponent;
-@ViewChild('progress')
-public progressM: CheckBoxComponent;
-
-
-
-  public sortSettings: Object;
+  // public sortSettings: Object;
   @ViewChild('Dialog')
   public dialogObj: DialogComponent;
   public isModal: boolean = true;
@@ -133,25 +125,7 @@ public progressM: CheckBoxComponent;
   public filterSettings: Object;
   public dropDownFilter: DropDownList;
   public toolbar: string[];
-  public selectList = [
-    {
-      name: 'toto',
-      value: 'toto',
-    },
-    {
-      name: 'titi',
-      value: 'titi',
-    },
-    {
-      name: 'tata',
-      value: 'tata',
-    },
-    {
-      name: 'tutu',
-      value: 'tutu',
-    },
-  ];
-  // public editSettings: Object;
+
   public listHeadersC: any = [
     {
       field: 'TaskID',
@@ -287,12 +261,11 @@ public progressM: CheckBoxComponent;
   });
   constructor(private http: HttpClient) {}
   ngOnInit(): void {
-    this.sortSettings =  { 
-      columns: [
-   
-  
-  ]
-}
+    //     this.sortSettings =  {
+    //       columns: [
+
+    //   ]
+    // }
     this.customAttributes = { class: 'customcssa' };
     this.selectionOptions = {
       type: 'Multiple',
@@ -310,7 +283,6 @@ public progressM: CheckBoxComponent;
       .catch((e) => true);
 
     this.pageSetting = { pageCount: 3 };
-
 
     this.format = { format: 'M/d/yyyy', type: 'date' };
 
@@ -378,7 +350,11 @@ public progressM: CheckBoxComponent;
       // { text: 'Filter', target: '.e-headercontent', id: 'filter' },
       // { text: 'Multi-Sort', target: '.e-headercontent', id: 'multiSort' },
     ];
-    this.filterSettings = { type: 'FilterBar', hierarchyMode: 'Parent', mode: 'Immediate' };
+    this.filterSettings = {
+      type: 'FilterBar',
+      hierarchyMode: 'Parent',
+      mode: 'Immediate',
+    };
     this.templateOptions = {
       create: (args: { element: Element }) => {
         let dd: HTMLInputElement = document.createElement('input');
@@ -405,15 +381,15 @@ public progressM: CheckBoxComponent;
       },
     };
   }
-  closeP(data){
-    console.log("closeP:",data)
-    if(data=='sorting'){
-      this.sorting=false;
+  closeP(data) {
+    console.log('closeP:', data);
+    if (data == 'sorting') {
+      this.sorting = false;
     }
-    if(data=='showChooser')
-    this.showChooser=false;
-    if(data=='filtering')
-   { this.filtering=false; }
+    if (data == 'showChooser') this.showChooser = false;
+    if (data == 'filtering') {
+      this.filtering = false;
+    }
   }
   // addColumn() {
   //   var column: any = { field: 'zzzzz', headerText: 'zzzzz', width: 50 };
@@ -440,18 +416,18 @@ public progressM: CheckBoxComponent;
     this.treegrid.refreshColumns();
   }
   actionComplete(args: EditEventArgs) {
-    if (args.requestType === 'sorting') {
-      console.log("sorting");
-      for (let columns of this.treegrid.getColumns()) {
-          for (let sortcolumns of this.treegrid.sortSettings.columns) {
-              if (sortcolumns.field === columns.field) {
-                  this.check(sortcolumns.field, true); break;
-              } else {
-                  this.check(columns.field, false);
-              }
-          }
-      }
-    }
+    // if (args.requestType === 'sorting') {
+    //   console.log("sorting");
+    //   for (let columns of this.treegrid.getColumns()) {
+    //       for (let sortcolumns of this.treegrid.sortSettings.columns) {
+    //           if (sortcolumns.field === columns.field) {
+    //               this.check(sortcolumns.field, true); break;
+    //           } else {
+    //               this.check(columns.field, false);
+    //           }
+    //       }
+    //   }
+    // }
     if (args.requestType == 'save' && args.action == 'add') {
       const body = {
         TaskID: 0,
@@ -705,9 +681,9 @@ public progressM: CheckBoxComponent;
 
       this.columnField = 'Priority';
     } else {
-    console.log('********arg.column*********: ', arg.column);
-    this.columnValue = arg.column.index + 1;
-    this.columnField = arg.column.field;
+      console.log('********arg.column*********: ', arg.column);
+      this.columnValue = arg.column.index + 1;
+      this.columnField = arg.column.field;
     }
     let row: Element = elem.closest('.e-row');
     let uid: string = row && row.getAttribute('data-uid');
@@ -718,13 +694,10 @@ public progressM: CheckBoxComponent;
       items[i].setAttribute('style', 'display: none;');
     }
     if (elem.closest('.e-row')) {
-      
-
       document
         .querySelectorAll('li#rcopy')[0]
         .setAttribute('style', 'display: block;');
 
-  
       document
         .querySelectorAll('li#rsibling')[0]
         .setAttribute('style', 'display: block;');
@@ -737,7 +710,7 @@ public progressM: CheckBoxComponent;
       let len =
         this.treegrid.element.querySelectorAll('.e-treegridexpand').length;
       // if (len !== 0) {
-       
+
       // } else {
       //   document
       //     .querySelectorAll('li#expandall')[0]
@@ -809,13 +782,11 @@ public progressM: CheckBoxComponent;
               .catch((e) => true);
           });
 
-  
         this.cutRowBool = false;
         this.copiedRow.setAttribute('style', 'background:white;');
       } else {
         var copyContent = this.treegrid.clipboardModule.copyContent;
 
-  
         var stringArray = copyContent.split('\t');
         let newRecord: Treerow = new Treerow(
           stringArray[0],
@@ -857,7 +828,7 @@ public progressM: CheckBoxComponent;
           .executeQuery(new Query())
           .then((e: ReturnOption) => (this.data = e.result.data as object[]))
           .catch((e) => true);
-  
+
         this.copiedRow.setAttribute('style', 'background:white;');
       }
     }
@@ -866,7 +837,6 @@ public progressM: CheckBoxComponent;
       if (this.cutRowBool == true) {
         var copyContent = this.treegrid.clipboardModule.copyContent;
 
-  
         var stringArray = copyContent.split('\t');
         let newRecord: Treerow = new Treerow(
           stringArray[0],
@@ -911,7 +881,6 @@ public progressM: CheckBoxComponent;
               });
           });
 
-  
         this.cutRowBool = false;
         this.copiedRow.setAttribute('style', 'background:white;');
       } else {
@@ -947,16 +916,16 @@ public progressM: CheckBoxComponent;
           .subscribe((data) => {
             console.log('post:------------------', data);
             this.dataManager
-            .executeQuery(new Query())
-            .then((e: ReturnOption) => (this.data = e.result.data as object[]))
-            .catch((e) => true);
+              .executeQuery(new Query())
+              .then(
+                (e: ReturnOption) => (this.data = e.result.data as object[])
+              )
+              .catch((e) => true);
           });
-       
+
         this.copiedRow.setAttribute('style', 'background:white;');
       }
-    }
-   
-    else if (args.item.id === 'rcopy') {
+    } else if (args.item.id === 'rcopy') {
       this.MultiSelect = true;
 
       this.editSettings = {
@@ -1035,7 +1004,7 @@ public progressM: CheckBoxComponent;
   };
 
   public showCloseIcon: boolean = true;
-  
+
   public saveColumn() {
     if (this.checkNewEdit == 'edit') {
       console.log('this.checkNewEdit:', this.checkNewEdit);
@@ -1066,9 +1035,9 @@ public progressM: CheckBoxComponent;
         }
         b.push(Object.assign({}, r));
       });
-   
-      this.treeColumns=[];
-      console.log("tre",this.treeColumns)
+
+      this.treeColumns = [];
+      console.log('tre', this.treeColumns);
       console.log('------b-------:', b);
       this.treeColumns = [...this.listHeadersC]; //this.listHeadersC;
       console.log('------[this.treeColumns]-------:', this.treeColumns);
@@ -1106,7 +1075,7 @@ public progressM: CheckBoxComponent;
     this.showEditColumn = false;
 
     this.ejDialog.hide();
-   
+
     this.treegrid.refreshColumns();
   }
   public btnclick = function (): void {
@@ -1139,11 +1108,9 @@ public progressM: CheckBoxComponent;
 
   public changeFontColor(e: ChangeEventArgs): void {
     this.ColFColor = <string>e.value;
-
   }
   public changeBackground(e: ChangeEventArgs): void {
     this.ColBColor = <string>e.value;
-
   }
   public checkboxChange(e: any): void {
     if (e.checked) {
@@ -1173,73 +1140,72 @@ public progressM: CheckBoxComponent;
     this.treegrid.refresh();
   }
 
-/************************** Multi Sort ********************/
-public onClick1(e: MouseEvent): void {
-  if (this.taskNameM.checked) {
+  /************************** Multi Sort ********************/
+  public onClick1(e: MouseEvent): void {
+    if (this.taskNameM.checked) {
       this.treegrid.sortByColumn('TaskName', 'Ascending', true);
-  } else {
+    } else {
       this.treegrid.grid.removeSortColumn('TaskName');
+    }
   }
-
-}
-public onClick2(e: MouseEvent): void {
-  if (this.durationM.checked) {
+  public onClick2(e: MouseEvent): void {
+    if (this.durationM.checked) {
       this.treegrid.sortByColumn('Duration', 'Ascending', true);
-  } else {
+    } else {
       this.treegrid.grid.removeSortColumn('Duration');
+    }
   }
-
-}
-public onClick3(e: MouseEvent): void {
-  if (this.startDateM.checked) {
+  public onClick3(e: MouseEvent): void {
+    if (this.startDateM.checked) {
       this.treegrid.sortByColumn('StartDate', 'Ascending', true);
-  } else {
+    } else {
       this.treegrid.grid.removeSortColumn('StartDate');
+    }
   }
-
-}
-public onClick4(e: MouseEvent): void {
-  if (this.endDateM.checked) {
+  public onClick4(e: MouseEvent): void {
+    if (this.endDateM.checked) {
       this.treegrid.sortByColumn('EndDate', 'Ascending', true);
-  } else {
+    } else {
       this.treegrid.grid.removeSortColumn('EndDate');
+    }
   }
-
-}
-public onClick5(e: MouseEvent): void {
-  if (this.priorityM.checked) {
+  public onClick5(e: MouseEvent): void {
+    if (this.priorityM.checked) {
       this.treegrid.sortByColumn('Priority', 'Ascending', true);
-  } else {
+    } else {
       this.treegrid.grid.removeSortColumn('Priority');
+    }
   }
-
-}
-public onClick6(e: MouseEvent): void {
-  if (this.progressM.checked) {
+  public onClick6(e: MouseEvent): void {
+    if (this.progressM.checked) {
       this.treegrid.sortByColumn('Progress', 'Ascending', true);
-  } else {
+    } else {
       this.treegrid.grid.removeSortColumn('Progress');
+    }
   }
 
-}
-
-public check(field: string, state: boolean): void {
-  switch (field) {
+  public check(field: string, state: boolean): void {
+    switch (field) {
       case 'TaskName':
-          this.taskNameM.checked = state; break;
+        this.taskNameM.checked = state;
+        break;
       case 'Duration':
-          this.durationM.checked = state; break;
+        this.durationM.checked = state;
+        break;
       case 'StartDate':
-          this.startDateM.checked = state; break;
+        this.startDateM.checked = state;
+        break;
       case 'EndDate':
-          this.endDateM.checked = state; break;
+        this.endDateM.checked = state;
+        break;
       case 'Priority':
-          this.priorityM.checked = state; break;
+        this.priorityM.checked = state;
+        break;
       case 'Progress':
-          this.progressM.checked = state; break;
+        this.progressM.checked = state;
+        break;
+    }
   }
-}
-
 }
 export interface ITaskModel {
   TaskID?: number;
