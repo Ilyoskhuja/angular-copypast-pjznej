@@ -9,9 +9,7 @@ import {
 
   FilterService
 } from '@syncfusion/ej2-angular-treegrid';
-// SelectionSettingsModel,
-// EditEventArgs,
-// EditSettingsModel,
+
 import { Treerow } from './treerow';
 import { v4 as uuidv4 } from 'uuid';
 import { getValue, isNullOrUndefined } from '@syncfusion/ej2-base';
@@ -298,15 +296,9 @@ public progressM: CheckBoxComponent;
   });
   constructor(private http: HttpClient) {}
   ngOnInit(): void {
-    // this.initilaizeTarget();
     this.sortSettings =  { 
       columns: [
-    //     { field: 'TaskName', direction: 'Ascending'  }, 
-    // { field: 'StartDate', direction: 'Ascending' },
-    // { field: 'EndDate', direction: 'Ascending' },
-    // { field: 'Duration', direction: 'Ascending' },
-    // { field: 'Priority', direction: 'Ascending' },
-    // { field: 'Progress', direction: 'Ascending' },
+   
   
   ]
 }
@@ -328,15 +320,6 @@ public progressM: CheckBoxComponent;
 
     this.pageSetting = { pageCount: 3 };
 
-    // this.editSettings = {
-    //   allowEditing: true,
-    //   allowAdding: true,
-    //   allowDeleting: true,
-
-    //   newRowPosition: 'Child',
-    //   // newRowPosition: 'Top',
-    //   mode: 'Batch',
-    // };
 
     this.format = { format: 'M/d/yyyy', type: 'date' };
 
@@ -394,15 +377,15 @@ public progressM: CheckBoxComponent;
       },
       // { text: 'Style', target: '.e-headercontent', id: 'style' },
 
-      { text: 'EditCol ', target: '.e-headercontent', id: 'editCol' },
-      { text: 'NewCol ', target: '.e-headercontent', id: 'newCol' },
+      // { text: 'EditCol ', target: '.e-headercontent', id: 'editCol' },
+      // { text: 'NewCol ', target: '.e-headercontent', id: 'newCol' },
 
-      { text: 'DeleteCol ', target: '.e-headercontent', id: 'deleteCol' },
-      { text: 'Show', target: '.e-headercontent', id: 'columnChooser' },
-      { text: 'Freeze', target: '.e-headercontent', id: 'freeze' },
+      // { text: 'DeleteCol ', target: '.e-headercontent', id: 'deleteCol' },
+      // { text: 'Show', target: '.e-headercontent', id: 'columnChooser' },
+      // { text: 'Freeze', target: '.e-headercontent', id: 'freeze' },
 
-      { text: 'Filter', target: '.e-headercontent', id: 'filter' },
-      { text: 'Multi-Sort', target: '.e-headercontent', id: 'multiSort' },
+      // { text: 'Filter', target: '.e-headercontent', id: 'filter' },
+      // { text: 'Multi-Sort', target: '.e-headercontent', id: 'multiSort' },
     ];
     this.filterSettings = { type: 'FilterBar', hierarchyMode: 'Parent', mode: 'Immediate' };
     this.templateOptions = {
@@ -744,39 +727,13 @@ public progressM: CheckBoxComponent;
       items[i].setAttribute('style', 'display: none;');
     }
     if (elem.closest('.e-row')) {
-      // if (
-      //   isNullOrUndefined(uid) ||
-      //   isNullOrUndefined(
-      //     getValue(
-      //       'hasChildRecords',
-      //       this.treegrid.grid.getRowObjectFromUID(uid).data
-      //     )
-      //   )
-      // ) 
-      // {
-      //   arg.cancel = true;
-      // } 
-      // else {
-      // let flag: boolean = getValue(
-      //   'expanded',
-      //   this.treegrid.grid.getRowObjectFromUID(uid).data
-      // );
-      document
-        .querySelectorAll('li#rndeDialog')[0]
-        .setAttribute('style', 'display: block;');
-      document
-        .querySelectorAll('li#rndeRow')[0]
-        .setAttribute('style', 'display: block;');
-      document
-        .querySelectorAll('li#rmultiSelect')[0]
-        .setAttribute('style', 'display: block;');
+      
+
       document
         .querySelectorAll('li#rcopy')[0]
         .setAttribute('style', 'display: block;');
 
-      document
-        .querySelectorAll('li#cut')[0]
-        .setAttribute('style', 'display: block;');
+  
       document
         .querySelectorAll('li#rsibling')[0]
         .setAttribute('style', 'display: block;');
@@ -788,98 +745,19 @@ public progressM: CheckBoxComponent;
     } else {
       let len =
         this.treegrid.element.querySelectorAll('.e-treegridexpand').length;
-      if (len !== 0) {
-        // document
-        //   .querySelectorAll('li#style')[0]
-        //   .setAttribute('style', 'display: block;');
-        document
-          .querySelectorAll('li#deleteCol')[0]
-          .setAttribute('style', 'display: block;');
-        document
-          .querySelectorAll('li#editCol')[0]
-          .setAttribute('style', 'display: block;');
-        document
-          .querySelectorAll('li#newCol')[0]
-          .setAttribute('style', 'display: block;');
-        document
-          .querySelectorAll('li#freeze')[0]
-          .setAttribute('style', 'display: block;');
-        document
-          .querySelectorAll('li#columnChooser')[0]
-          .setAttribute('style', 'display: block;');
-        document
-          .querySelectorAll('li#filter')[0]
-          .setAttribute('style', 'display: block;');
-        document
-          .querySelectorAll('li#multiSort')[0]
-          .setAttribute('style', 'display: block;');
-      } else {
-        document
-          .querySelectorAll('li#expandall')[0]
-          .setAttribute('style', 'display: block;');
-      }
+      // if (len !== 0) {
+       
+      // } else {
+      //   document
+      //     .querySelectorAll('li#expandall')[0]
+      //     .setAttribute('style', 'display: block;');
+      // }
     }
   }
 
-  // created(args) {
-  //   document.addEventListener(
-  //     'keydown',
-  //     function (e) {
-  //       if (e.keyCode === 88) {
-  //         this.flag = true;
-  //         for (
-  //           var i = 0;
-  //           i < this.treegrid.getSelectedRowCellIndexes()[0].cellIndexes.length;
-  //           i++
-  //         ) {
-  //           this.fieldData.push(
-  //             this.treegrid.getColumnByIndex(
-  //               this.treegrid.getSelectedRowCellIndexes()[0].cellIndexes[i]
-  //             ).field
-  //           );
-  //         }
-  //         this.cutIndex = this.treegrid.getSelectedRowCellIndexes();
-  //         this.treegrid.copy();
-  //       }
-  //     }.bind(this)
-  //   );
-  // }
-  // beforePaste(args) {
-  //   if (this.flag == true) {
-  //     for (var i = 0; i < this.cutIndex.length; i++) {
-  //       var rowInfo = this.treegrid.getRowInfo(
-  //         this.treegrid.getRowByIndex(this.cutIndex[i].rowIndex)
-  //       );
-  //       for (var j = 0; j < this.fieldData.length; j++) {
-  //         if (rowInfo.rowData[this.fieldData[j]] != '') {
-  //           this.treegrid.updateCell(
-  //             this.cutIndex[i].rowIndex,
-  //             this.fieldData[j],
-  //             ''
-  //           );
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
   contextMenuClick(args): void {
-    // this.MultiSelect = true;
     if (args.item.text == 'Cut') {
       this.flag = true;
-      // for (
-      //   var i = 0;
-      //   i < this.treegrid.getSelectedRowCellIndexes()[0].cellIndexes.length;
-      //   i++
-      // ) {
-      //   this.fieldData.push(
-      //     this.treegrid.getColumnByIndex(
-      //       this.treegrid.getSelectedRowCellIndexes()[0].cellIndexes[i]
-      //     ).field
-      //   );
-      // }
-      // this.cutIndex = this.treegrid.getSelectedRowCellIndexes();
-      // this.treegrid.copyHierarchyMode = 'None';
-      // this.treegrid.copy();
       this.cutRow = this.treegrid.getRowByIndex(this.rowIndex);
       this.cutRowBool = true;
       this.treegrid.copyHierarchyMode = 'None';
@@ -889,8 +767,6 @@ public progressM: CheckBoxComponent;
     if (args.item.id == 'rsibling') {
       if (this.cutRowBool == true) {
         var copyContent = this.treegrid.clipboardModule.copyContent;
-
-        // this.treegrid.paste(copyContent, rowIndex);
 
         var stringArray = copyContent.split('\t');
         let newRecord: Treerow = new Treerow(
@@ -942,15 +818,13 @@ public progressM: CheckBoxComponent;
               .catch((e) => true);
           });
 
-        // this.treegrid.addRecord(newRecord, 0, 'Above');
-
+  
         this.cutRowBool = false;
         this.copiedRow.setAttribute('style', 'background:white;');
       } else {
         var copyContent = this.treegrid.clipboardModule.copyContent;
 
-        // this.treegrid.paste(copyContent, rowIndex);
-
+  
         var stringArray = copyContent.split('\t');
         let newRecord: Treerow = new Treerow(
           stringArray[0],
@@ -992,8 +866,7 @@ public progressM: CheckBoxComponent;
           .executeQuery(new Query())
           .then((e: ReturnOption) => (this.data = e.result.data as object[]))
           .catch((e) => true);
-        // this.treegrid.addRecord(newRecord, 0, 'Above');
-
+  
         this.copiedRow.setAttribute('style', 'background:white;');
       }
     }
@@ -1002,8 +875,7 @@ public progressM: CheckBoxComponent;
       if (this.cutRowBool == true) {
         var copyContent = this.treegrid.clipboardModule.copyContent;
 
-        // this.treegrid.paste(copyContent, rowIndex);
-
+  
         var stringArray = copyContent.split('\t');
         let newRecord: Treerow = new Treerow(
           stringArray[0],
@@ -1048,8 +920,7 @@ public progressM: CheckBoxComponent;
               });
           });
 
-        // this.treegrid.addRecord(newRecord, 0, 'Above');
-
+  
         this.cutRowBool = false;
         this.copiedRow.setAttribute('style', 'background:white;');
       } else {
@@ -1090,52 +961,11 @@ public progressM: CheckBoxComponent;
             .catch((e) => true);
           });
        
-        // this.treegrid.addRecord(newRecord, this.selectedRow.row.rowIndex,'Child');
         this.copiedRow.setAttribute('style', 'background:white;');
       }
-    } else if (args.item.id === 'deleteCol') {
-      this.deleteColumnX();
-    } else if (args.item.id === 'rndeDialog') {
-      this.editSettings = {
-        allowEditing: true,
-        allowAdding: true,
-        allowDeleting: true,
-        mode: 'Dialog',
-        newRowPosition: 'Below',
-      };
-      this.toolbar = ['Add', 'Edit', 'Delete'];
-    } else if (args.item.id === 'rndeRow') {
-      this.editSettings = {
-        allowEditing: true,
-        allowAdding: true,
-        allowDeleting: true,
-        mode: 'Row',
-      };
-      this.toolbar = ['Add', 'Edit', 'Delete', 'Update'];
-    } else if (args.item.id === 'rmultiSelect') {
-      this.MultiSelect = true;
-    } else if (args.item.id === 'editCol') {
-      this.checkNewEdit = 'edit';
-      this.showEditColumn = true;
-      this.getCurrentField();
-    } else if (args.item.id === 'newCol') {
-      this.checkNewEdit = 'add';
-      this.showEditColumn = true;
-      this.getCurrentField();
     }
-    // else if (args.item.id === 'style') {
-    //   this.Properties = !this.Properties;
-    // }
-    else if (args.item.id === 'columnChooser') {
-      this.showChooser = !this.showChooser;
-    } else if (args.item.id === 'multiSort') {
-      this.sorting = !this.sorting;
-    } else if (args.item.id === 'filter') {
-      this.filtering = true;
-      console.log("this.filtering:",this.filtering)
-    } else if (args.item.id === 'freeze') {
-      this.treegrid.frozenColumns = this.columnValue;
-    } else if (args.item.id === 'rcopy') {
+   
+    else if (args.item.id === 'rcopy') {
       this.MultiSelect = true;
 
       this.editSettings = {
@@ -1187,16 +1017,10 @@ public progressM: CheckBoxComponent;
   public dataBound(): void {
     this.flag = true;
   }
-  // Initialize the Dialog component target element.
-  // public initilaizeTarget: EmitType<object> = () => {
-  //   this.targetElement = this.container.nativeElement.parentElement;
-  // };
-  // Hide the Dialog when click the footer button.
   public hideDialog: EmitType<object> = () => {
     this.ejDialog.hide();
     this.showEditColumn = false;
   };
-  // Enables the footer buttons
   public buttons: Object = [
     {
       click: this.hideDialog.bind(this),
@@ -1220,12 +1044,7 @@ public progressM: CheckBoxComponent;
   };
 
   public showCloseIcon: boolean = true;
-  // Hide the Dialog when click the footer button.
-  // public hideDialog: EmitType<object> = () => {
-  //   this.ejDialog.hide();
-  //   this.showEditColumn = false;
-  // };
-
+  
   public saveColumn() {
     if (this.checkNewEdit == 'edit') {
       console.log('this.checkNewEdit:', this.checkNewEdit);
@@ -1256,15 +1075,10 @@ public progressM: CheckBoxComponent;
         }
         b.push(Object.assign({}, r));
       });
-      console.log('------listHeadersC-------:', this.listHeadersC);
-      // console.log("this.listHeadersC.map((object) => ({ ...object })) bbbbbbbbbbbbbb:",b);
+   
       this.treeColumns=[];
       console.log("tre",this.treeColumns)
-      // this.treegrid.refreshColumns();
-      // let c=this.listHeadersC.map((object) => ({ ...object }));
       console.log('------b-------:', b);
-      //  let g=this.listHeadersC;
-      //  console.log("g:",g)
       this.treeColumns = [...this.listHeadersC]; //this.listHeadersC;
       console.log('------[this.treeColumns]-------:', this.treeColumns);
 
@@ -1272,8 +1086,6 @@ public progressM: CheckBoxComponent;
       this.treegrid.refreshColumns();
     }
     if (this.checkNewEdit == 'add') {
-      // var column: any = { field: this.ColName, headerText: this.ColName, width: this.ColMinWidth, };
-      // this.treeColumns.push(column);
       this.listHeadersC.forEach((a) => {
         delete a['customAttributes'];
       });
@@ -1293,23 +1105,17 @@ public progressM: CheckBoxComponent;
         customAttributes: { class: 'cssClassaa' },
       });
 
-      // const b = this.listHeadersC.map((object) => ({ ...object }));
-
-      // this.treeColumns = b;
       this.treeColumns = [];
       this.treeColumns = this.listHeadersC;
 
       this.textWrap = this.ColChecked;
       this.treegrid.refreshColumns();
-      // console.log("AddColumn:", this.treeColumns);
-      // this.treegrid.refreshColumns();
     }
 
     this.showEditColumn = false;
 
     this.ejDialog.hide();
-    //  this.hideDialog();
-
+   
     this.treegrid.refreshColumns();
   }
   public btnclick = function (): void {
@@ -1340,99 +1146,14 @@ public progressM: CheckBoxComponent;
     //  this.dropdown2.index = 0;
   }
 
-  // public changeMinWidth(e: ChangeEventArgs): void {
-  //   let val: any = <string>e.value;
-
-  //   this.treegrid.getColumnByField(this.columnField).minWidth = val;
-  // }
   public changeFontColor(e: ChangeEventArgs): void {
     this.ColFColor = <string>e.value;
 
-    // this.listHeadersC.forEach((a) => {
-    //   delete a['customAttributes'];
-    // });
-    // var colorP = 'yellow';
-    // var catched = false;
-    // this.listHeadersC.forEach((r) => {
-    //   if (!catched) {
-    //     catched = true;
-    //     var style = document.createElement('style');
-    //     style.type = 'text/css';
-    //     style.innerHTML = `.e-treegrid .e-headercell.cssClassaa { color: ${val}; }`;
-    //     document.body.append(style);
-    //   }
-
-    //   if (r.field == this.columnField) {
-    //     r['customAttributes'] = { class: 'cssClassaa' };
-    //   }
-    // });
-    // const b = this.listHeadersC.map((object) => ({ ...object }));
-
-    // this.treeColumns = b;
   }
-  // public changeFontSize(e: ChangeEventArgs): void {
-  //   let val: any = <string>e.value;
-  //   this.listHeadersC.forEach((a) => {
-  //     delete a['customAttributes'];
-  //   });
-  //   var catched = false;
-  //   this.listHeadersC.forEach((r) => {
-  //     if (!catched) {
-  //       catched = true;
-  //       var style = document.createElement('style');
-  //       style.type = 'text/css';
-  //       style.innerHTML = `.e-treegrid .e-headercell.cssClassaa {  font-size: ${val};}`;
-  //       document.body.append(style);
-  //     }
-
-  //     if (r.field == this.columnField) {
-  //       r['customAttributes'] = { class: 'cssClassaa' };
-  //     }
-  //   });
-
-  //   const b = this.listHeadersC.map((object) => ({ ...object }));
-
-  //   this.treeColumns = b;
-  // }
   public changeBackground(e: ChangeEventArgs): void {
     this.ColBColor = <string>e.value;
 
-    // this.listHeadersC.forEach((a) => {
-    //   delete a['customAttributes'];
-    // });
-    // var colorP = 'yellow';
-    // var catched = false;
-    // this.listHeadersC.forEach((r) => {
-    //   if (!catched) {
-    //     catched = true;
-    //     var style = document.createElement('style');
-    //     style.type = 'text/css';
-    //     style.innerHTML = `.e-treegrid .e-headercell.cssClassaa { background-color: ${val}; }`;
-    //     document.body.append(style);
-    //   }
-
-    //   if (r.field == this.columnField) {
-    //     r['customAttributes'] = { class: 'cssClassaa' };
-    //   }
-    // });
-
-    // const b = this.listHeadersC.map((object) => ({ ...object }));
-
-    // this.treeColumns = b;
   }
-  // public changeAlig(e: ChangeEventArgs): void {
-  //   let val: any = <string>e.value;
-  //   this.treegrid.getColumnByField(this.columnField).textAlign = val;
-
-  //   // this.treegrid.refreshColumns();
-  // }
-  // public change(e: ChangeEventArgs): void {
-  //   let val: any = <string>e.value;
-
-  //   this.treegrid.getColumnByField(this.columnField).type = val;
-
-  //   this.treegrid.refreshColumns();
-  // }
   public checkboxChange(e: any): void {
     if (e.checked) {
       this.textWrap = true;
@@ -1447,38 +1168,10 @@ public progressM: CheckBoxComponent;
   copy() {
     this.copiedRow = this.treegrid.getRowByIndex(this.rowIndex);
 
-    // console.log('copy:', this.selectedRow.row);
-    // this.selectedRow.setAttribute('style', 'background:#FFFF00;');
-    // this.selectedRow.style.background = '#FFFF00';
     this.treegrid.copyHierarchyMode = 'None';
     this.treegrid.copy();
     this.copiedRow.setAttribute('style', 'background:#FFC0CB;');
-    // this.treegrid.startEdit();
-    // this.selectedRow.row.classList.add('copied');
-    // console.log(
-    //   'classList:',
-    //   this.selectedRow.row
-    // (this.selectedRow as HTMLElement).classList.add('copied')
-    // );
-    // (this.selectedRow as HTMLElement).classList.add('copied');
-    // this.selectedRow.style.background = '#FFC0CB';
-    // this.selectedRow.setAttribute('style', 'background:#FFC0CB;');
-
-    // this.selectedRow.row.style.background = '#FFC0CB';
-    // this.treegrid.rowTemplate.refresh(this.selectedRow);
-
-    // console.log(this.selectedRow.row.classList.contains('copied'));
-    // this.rowBound(this.selectedRow);
-    // '#FFC0CB';
   }
-  // private createTreeGridColumns(customAtt) {
-  //   this.listHeaders.forEach((r) => {
-  //     if (r.field == this.columnField) {
-  //       r.customAttributes = customAtt;
-  //     }
-  //   });
-  //   return this.listHeaders;
-  // }
   delete(): void {
     const selectedRow: number = this.treegrid.getSelectedRowIndexes()[0];
     if (this.treegrid.getSelectedRowIndexes().length) {
@@ -1539,20 +1232,6 @@ public onClick6(e: MouseEvent): void {
 
 }
 
-// public sort (args: SortEventArgs ): void {
-//   if (args.requestType === 'sorting') {
-//       for (let columns of this.treegrid.getColumns()) {
-//           for (let sortcolumns of this.treegrid.sortSettings.columns) {
-//               if (sortcolumns.field === columns.field) {
-//                   this.check(sortcolumns.field, true); break;
-//               } else {
-//                   this.check(columns.field, false);
-//               }
-//           }
-//       }
-//   }
-
-// }
 public check(field: string, state: boolean): void {
   switch (field) {
       case 'TaskName':
@@ -1570,21 +1249,6 @@ public check(field: string, state: boolean): void {
   }
 }
 
-
-
-
-  // rowBound(args: RowDataBoundEventArgs) {
-  //   // if (args.row == this.copiedRow) {
-  //   //   args.row.style.background = '#FFFF00';
-  //   // }
-  //   console.log('copied inside', args.row.classList.contains('copied'));
-  //   if (args.row.classList.contains('copied')) {
-  //     console.log('copied inside');
-  //     // (args.row as HTMLElement).style.background = 'green';
-  //     args.row.setAttribute('style', 'background:#FFC0CB;');
-  //     args.row.style.background = '#FFC0CB';
-  //   }
-  // }
 }
 export interface ITaskModel {
   TaskID?: number;
